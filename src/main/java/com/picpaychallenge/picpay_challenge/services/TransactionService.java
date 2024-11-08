@@ -6,7 +6,6 @@ import com.picpaychallenge.picpay_challenge.domain.user.User;
 import com.picpaychallenge.picpay_challenge.dtos.TransactionDTO;
 import com.picpaychallenge.picpay_challenge.repositories.TransactionRepository;
 import com.picpaychallenge.picpay_challenge.services.UserService;
-import org.hibernate.mapping.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +15,7 @@ import org.springframework.web.client.RestTemplate;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Map;
 
 @Service
 public class TransactionService {
@@ -40,7 +40,7 @@ public class TransactionService {
 
 
         boolean isAuthorized = this.authorizeTransaction(sender, transaction.value());
-        if (!isAuthorized){
+        if (!isAuthorized) {
             throw new Exception("Transação não autorizada");
         }
 
@@ -60,19 +60,18 @@ public class TransactionService {
     }
 
 
-
-
     public boolean authorizeTransaction(User sender, BigDecimal value) {
-        ResponseEntity<Map> authorizationResponse = restTemplate.getForEntity(("https://util.devi.tools/api/v2/authorize"), Map.class);
+        ResponseEntity<Map> authorizationResponse = restTemplate.getForEntity("https://util.devi.tools/api/v2/authorize", Map.class);
 
-        if (authorizationResponse.getStatusCode() = HttpStatus.OK) {
-
-            String message = (String) authorizationResponse.getBody().get("message");
+        if (authorizationResponse.getStatusCode() == HttpStatus.OK) {
+            String message = (String) authorizationResponse.getBody().get("Message");
             return "Autorizado".equalsIgnoreCase(message);
         } else return false;
 
-
     }
-
-
 }
+
+
+
+
+

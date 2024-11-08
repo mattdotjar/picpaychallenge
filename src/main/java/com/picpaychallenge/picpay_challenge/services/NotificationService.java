@@ -16,18 +16,19 @@ public class NotificationService {
     private RestTemplate restTemplate;
 
 
-    public void sendNotification(User user, String message) {
+    public void sendNotification(User user, String message) throws Exception {
         String email = user.getEmail();
         NotificationDTO notificationRequest = new NotificationDTO(email, message);
 
 
         ResponseEntity<String> notificationResponse = restTemplate.postForEntity("https://util.devi.tools/api/v1/notify", notificationRequest, String.class);
 
-        if (!(notificationResponse.getStatusCode() == HttpStatus.OK))){
+        if (!(notificationResponse.getStatusCode() == HttpStatus.OK)){
             System.out.println("Erro ao enviar notificação!");
             throw new Exception("Serviço de Notificação está fora do ar");
         }
     }
 }
+
 
 

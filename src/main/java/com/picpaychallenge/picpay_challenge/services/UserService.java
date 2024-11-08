@@ -3,11 +3,13 @@ package com.picpaychallenge.picpay_challenge.services;
 
 import com.picpaychallenge.picpay_challenge.domain.user.User;
 import com.picpaychallenge.picpay_challenge.domain.user.UserType;
+import com.picpaychallenge.picpay_challenge.dtos.UserDTO;
 import com.picpaychallenge.picpay_challenge.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Service
 public class UserService {
@@ -33,4 +35,16 @@ public class UserService {
     public void saveUser(User user) {
         this.repo.save(user);
     }
+
+    public User createUser(UserDTO data) {
+        User newuser = new User(data);
+        this.saveUser(newuser);
+        return newuser;
+    }
+
+    public List<User> getAllUsers(){
+        return this.repo.findAll();
+    }
+
+
 }
