@@ -3,10 +3,7 @@ package com.picpaychallenge.picpay_challenge.domain.user;
 
 import com.picpaychallenge.picpay_challenge.dtos.UserDTO;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.math.BigDecimal;
 
@@ -15,6 +12,7 @@ import java.math.BigDecimal;
 @Getter
 @Setter
 @AllArgsConstructor
+@NoArgsConstructor
 @EqualsAndHashCode(of = "id")
 
 
@@ -46,6 +44,7 @@ public class User {
         this.userType = data.userType();
         this.password = data.password();
         this.email = data.email();
+        this.document = data.document();
     }
 
 }
