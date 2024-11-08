@@ -2,16 +2,25 @@ package com.picpaychallenge.picpay_challenge.domain.user;
 
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.math.BigDecimal;
 
 @Entity(name = "users")
 @Table("users")
+@Getter
+@Setter
+@AllArgsConstructor
 @EqualsAndHashCode(of = "id")
+
+
 public class User {
 
-    @@Id
+
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY);
     private Long id;
     private String firstName;
