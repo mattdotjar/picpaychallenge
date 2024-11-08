@@ -3,10 +3,7 @@ package com.picpaychallenge.picpay_challenge.domain.transaction;
 
 import com.picpaychallenge.picpay_challenge.domain.user.User;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -17,6 +14,7 @@ import java.time.LocalDateTime;
 @Setter
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
+@NoArgsConstructor
 public class Transaction {
 
     @Id
