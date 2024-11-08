@@ -1,6 +1,7 @@
-package com.picpaychallenge.picpay_challenge.domain.transaction;
+package com.picpaychallenge.picpay_challenge.services;
 
 
+import com.picpaychallenge.picpay_challenge.domain.transaction.Transaction;
 import com.picpaychallenge.picpay_challenge.domain.user.User;
 import com.picpaychallenge.picpay_challenge.dtos.TransactionDTO;
 import com.picpaychallenge.picpay_challenge.repositories.TransactionRepository;
@@ -57,6 +58,8 @@ public class TransactionService {
         this.userService.saveUser(sender);
         this.userService.saveUser(receiver);
     }
+
+
 
 
     public boolean authorizeTransaction(User sender, BigDecimal value) {
